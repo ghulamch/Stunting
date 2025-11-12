@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Kontrol - StuntingCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="additional-styles.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/sidebar.js" defer></script>
+</head>
+<body>
+    <header class="mobile-header">
+        <div class="mobile-header-left">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-logo">
+                <div class="icon-box icon-box-primary" style="width: 40px; height: 40px; font-size: 20px;">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h2>StuntingCare</h2>
+            </div>
+        </div>
+        <div class="avatar avatar-md">
+            <i class="fas fa-user"></i>
+        </div>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <div class="container">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <div class="flex-between mb-lg">
+                <div>
+                    <h1 class="heading-xl mb-sm">Jadwal Kontrol</h1>
+                    <p class="text-md text-gray">Kelola jadwal pemeriksaan kesehatan anak</p>
+                </div>
+                <button class="btn btn-primary btn-lg" onclick="openModal('addScheduleModal')">
+                    <i class="fas fa-plus"></i>
+                    Tambah Jadwal
+                    </button>
+            </div>
+
+            <div class="grid grid-2 mb-lg">
+                <div class="stat-card">
+                    <div class="stat-card-content">
+                        <div class="stat-card-icon icon-box-warning">
+                            <i class="fas fa-calendar-days"></i>
+                        </div>
+                        <div class="stat-card-info">
+                            <div class="stat-card-label">Jadwal Bulan Ini</div>
+                            <div class="stat-card-value">8</div>
+                            <div class="stat-card-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                2 dari bulan lalu
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-content">
+                        <div class="stat-card-icon icon-box-success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-card-info">
+                            <div class="stat-card-label">Selesai Kontrol</div>
+                            <div class="stat-card-value">15</div>
+                            <div class="stat-card-change positive">
+                                <i class="fas fa-check"></i>
+                                100% kehadiran
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-lg card-no-hover">
+                <div class="card-header">
+                    <div class="icon-box icon-box-sm icon-box-primary">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="heading-sm">Jadwal Mendatang</h3>
+                </div>
+
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <div class="schedule-date">
+                            <div class="schedule-date-day">15</div>
+                            <div class="schedule-date-month">Nov</div>
+                        </div>
+                        <div class="schedule-info">
+                            <h4 class="schedule-title">Kontrol Rutin - Naila Suki</h4>
+                            <div class="schedule-detail">
+                                <i class="fas fa-clock"></i>
+                                <span>09:00 - 10:00 WIB</span>
+                            </div>
+                            <div class="schedule-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Puskesmas Jati Asih</span>
+                            </div>
+                            <div class="schedule-detail">
+                                <i class="fas fa-user-doctor"></i>
+                                <span>Dr. Siti Rahmawati</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-warning">Menunggu</span>
+                    </div>
+                    <div class="schedule-actions">
+                        <button class="btn btn-sm btn-success">
+                            <i class="fas fa-check"></i>
+                            Selesai
+                        </button>
+                        <button class="btn btn-sm btn-outline" onclick="openModal('editScheduleModal')">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                        <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-trash"></i>
+                            Hapus
+                        </button>
+                    </div>
+                </div>
+
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <div class="schedule-date">
+                            <div class="schedule-date-day">18</div>
+                            <div class="schedule-date-month">Nov</div>
+                        </div>
+                        <div class="schedule-info">
+                            <h4 class="schedule-title">Imunisasi - Aisyah Putri</h4>
+                            <div class="schedule-detail">
+                                <i class="fas fa-clock"></i>
+                                <span>10:00 - 11:00 WIB</span>
+                            </div>
+                            <div class="schedule-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Posyandu Melati</span>
+                            </div>
+                            <div class="schedule-detail">
+                                <i class="fas fa-syringe"></i>
+                                <span>Vaksin MR</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-warning">Menunggu</span>
+                    </div>
+                    <div class="schedule-actions">
+                        <button class="btn btn-sm btn-success">
+                            <i class="fas fa-check"></i>
+                            Selesai
+                        </button>
+                        <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                        <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-trash"></i>
+                            Hapus
+                        </button>
+                    </div>
+                </div>
+
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <div class="schedule-date">
+                            <div class="schedule-date-day">22</div>
+                            <div class="schedule-date-month">Nov</div>
+                        </div>
+                        <div class="schedule-info">
+                            <h4 class="schedule-title">Konsultasi Gizi - Rizki Ahmad</h4>
+                            <div class="schedule-detail">
+                                <i class="fas fa-clock"></i>
+                                <span>14:00 - 15:00 WIB</span>
+                            </div>
+                            <div class="schedule-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>RS Umum Jati</span>
+                            </div>
+                            <div class="schedule-detail">
+                                <i class="fas fa-user-doctor"></i>
+                                <span>Ahli Gizi - Ns. Dewi Lestari</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-warning">Menunggu</span>
+                    </div>
+                    <div class="schedule-actions">
+                        <button class="btn btn-sm btn-success">
+                            <i class="fas fa-check"></i>
+                            Selesai
+                        </button>
+                        <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                        <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-trash"></i>
+                            Hapus
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-no-hover">
+                <div class="card-header">
+                    <div class="icon-box icon-box-sm icon-box-success">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3 class="heading-sm">Riwayat Kontrol</h3>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item completed">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="flex-between mb-sm">
+                                <h4 class="heading-sm">Kontrol Rutin - Naila Suki</h4>
+                                <span class="badge badge-success">Selesai</span>
+                            </div>
+                            <div class="schedule-detail mb-sm">
+                                <i class="fas fa-calendar"></i>
+                                <span>08 November 2025</span>
+                            </div>
+                            <p class="text-sm">
+                                Hasil: Pertumbuhan normal, BB 15.54kg, TB 101.35cm. Lanjutkan pola makan sehat.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item completed">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="flex-between mb-sm">
+                                <h4 class="heading-sm">Imunisasi Booster - Aisyah Putri</h4>
+                                <span class="badge badge-success">Selesai</span>
+                            </div>
+                            <div class="schedule-detail mb-sm">
+                                <i class="fas fa-calendar"></i>
+                                <span>05 November 2025</span>
+                            </div>
+                            <p class="text-sm">
+                                Vaksin DPT booster diberikan. Tidak ada efek samping. Jadwal berikutnya 6 bulan lagi.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item completed">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="flex-between mb-sm">
+                                <h4 class="heading-sm">Pemeriksaan Pertumbuhan - Rizki Ahmad</h4>
+                                <span class="badge badge-success">Selesai</span>
+                            </div>
+                            <div class="schedule-detail mb-sm">
+                                <i class="fas fa-calendar"></i>
+                                <span>01 November 2025</span>
+                            </div>
+                            <p class="text-sm">
+                                BB 14.2kg, TB 98cm. Perlu peningkatan asupan protein. Program gizi dimulai.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal" id="addScheduleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="heading-md">Tambah Jadwal Kontrol</h3>
+                <button class="modal-close" onclick="closeModal('addScheduleModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Pilih Anak</label>
+                    <select class="form-select">
+                        <option value="">Pilih anak</option>
+                        <option value="naila">Naila Suki</option>
+                        <option value="aisyah">Aisyah Putri</option>
+                        <option value="rizki">Rizki Ahmad</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Jenis Kontrol</label>
+                    <select class="form-select">
+                        <option value="">Pilih jenis kontrol</option>
+                        <option value="rutin">Kontrol Rutin</option>
+                        <option value="imunisasi">Imunisasi</option>
+                        <option value="konsultasi">Konsultasi Gizi</option>
+                        <option value="tumbuh-kembang">Tumbuh Kembang</option>
+                    </select>
+                </div>
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label class="form-label">Tanggal</label>
+                        <input type="date" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Waktu</label>
+                        <input type="time" class="form-input">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Lokasi</label>
+                    <input type="text" class="form-input" placeholder="Puskesmas / Posyandu / Rumah Sakit">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Nama Tenaga Medis</label>
+                    <input type="text" class="form-input" placeholder="Nama dokter / bidan / perawat">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Catatan</label>
+                    <textarea class="form-textarea" placeholder="Catatan tambahan (opsional)"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('addScheduleModal')">Batal</button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                    Simpan Jadwal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="editScheduleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="heading-md">Edit Jadwal Kontrol</h3>
+                <button class="modal-close" onclick="closeModal('editScheduleModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Pilih Anak</label>
+                    <select class="form-select">
+                        <option value="naila" selected>Naila Suki</option>
+                        <option value="aisyah">Aisyah Putri</option>
+                        <option value="rizki">Rizki Ahmad</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Jenis Kontrol</label>
+                    <select class="form-select">
+                        <option value="rutin" selected>Kontrol Rutin</option>
+                        <option value="imunisasi">Imunisasi</option>
+                        <option value="konsultasi">Konsultasi Gizi</option>
+                        <option value="tumbuh-kembang">Tumbuh Kembang</option>
+                    </select>
+                </div>
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label class="form-label">Tanggal</label>
+                        <input type="date" class="form-input" value="2025-11-15">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Waktu</label>
+                        <input type="time" class="form-input" value="09:00">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Lokasi</label>
+                    <input type="text" class="form-input" value="Puskesmas Jati Asih">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Nama Tenaga Medis</label>
+                    <input type="text" class="form-input" value="Dr. Siti Rahmawati">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Catatan</label>
+                    <textarea class="form-textarea" placeholder="Catatan tambahan (opsional)"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('editScheduleModal')">Batal</button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                    Update Jadwal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(this.id);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

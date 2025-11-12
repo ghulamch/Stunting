@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Anak - StuntingCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/sidebar.js" defer></script>
+</head>
+<body>
+    <header class="mobile-header">
+        <div class="mobile-header-left">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-logo">
+                <div class="icon-box icon-box-primary" style="width: 40px; height: 40px; font-size: 20px;">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h2>StuntingCare</h2>
+            </div>
+        </div>
+        <div class="avatar avatar-md">
+            <i class="fas fa-user"></i>
+        </div>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <div class="container">
+        <div id="sidebar-container"></div>
+        <main class="main-content">
+            <div class="flex-between mb-lg">
+                <div>
+                    <h1 class="heading-xl mb-sm">Data Anak</h1>
+                    <p class="text-md text-gray">Kelola dan pantau data pertumbuhan anak Anda</p>
+                </div>
+                <button class="btn btn-primary btn-lg" onclick="openModal('addChildModal')">
+                    <i class="fas fa-plus"></i>
+                    Tambah Anak
+                </button>
+            </div>
+
+            <div class="grid grid-2 mb-lg">
+                <div class="child-card" onclick="openModal('detailModal1')">
+                    <div class="child-card-header">
+                        <div class="avatar avatar-xl">A</div>
+                        <div>
+                            <h3 class="heading-md mb-sm">Aisyah Putri</h3>
+                            <span class="badge badge-success">Normal</span>
+                        </div>
+                    </div>
+                    <div class="child-info-grid">
+                        <div class="child-info-item">
+                            <span class="text-xs">Jenis Kelamin</span>
+                            <span class="text-md" style="font-weight: 500;">Perempuan</span>
+                        </div>
+                        <div class="child-info-item">
+                            <span class="text-xs">Tanggal Lahir</span>
+                            <span class="text-md" style="font-weight: 500;">15 Agustus 2022</span>
+                        </div>
+                        <div class="child-info-item">
+                            <span class="text-xs">Tinggi Badan</span>
+                            <span class="text-md" style="font-weight: 500;">85 cm</span>
+                        </div>
+                        <div class="child-info-item">
+                            <span class="text-xs">Berat Badan</span>
+                            <span class="text-md" style="font-weight: 500;">11.5 kg</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="child-card" onclick="openModal('detailModal2')">
+                    <div class="child-card-header">
+                        <div class="avatar avatar-xl">R</div>
+                        <div>
+                            <h3 class="heading-md mb-sm">Rizki Ahmad</h3>
+                            <span class="badge badge-warning">Perlu Perhatian</span>
+                        </div>
+                    </div>
+                    <div class="child-info-grid">
+                        <div class="child-info-item">
+                            <span class="text-xs">Jenis Kelamin</span>
+                            <span class="text-md" style="font-weight: 500;">Laki-laki</span>
+                        </div>
+                        <div class="child-info-item">
+                            <span class="text-xs">Tanggal Lahir</span>
+                            <span class="text-md" style="font-weight: 500;">10 Oktober 2020</span>
+                        </div>
+                        <div class="child-info-item">
+                            <span class="text-xs">Tinggi Badan</span>
+                            <span class="text-md" style="font-weight: 500;">98 cm</span>
+                        </div>
+                        <div class="child-info-item">
+                            <span class="text-xs">Berat Badan</span>
+                            <span class="text-md" style="font-weight: 500;">14.2 kg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-box icon-box-sm icon-box-primary">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3 class="heading-sm">Riwayat Pemeriksaan</h3>
+                </div>
+                
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Nama Anak</th>
+                                <th>Tinggi (cm)</th>
+                                <th>Berat (kg)</th>
+                                <th>Status</th>
+                                <th>Catatan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10 Nov 2025</td>
+                                <td>
+                                    <div class="flex gap-sm">
+                                        <div class="avatar avatar-sm">A</div>
+                                        <span>Aisyah Putri</span>
+                                    </div>
+                                </td>
+                                <td>85</td>
+                                <td>11.5</td>
+                                <td><span class="badge badge-success">Normal</span></td>
+                                <td>Pertumbuhan baik</td>
+                            </tr>
+                            <tr>
+                                <td>10 Nov 2025</td>
+                                <td>
+                                    <div class="flex gap-sm">
+                                        <div class="avatar avatar-sm">R</div>
+                                        <span>Rizki Ahmad</span>
+                                    </div>
+                                </td>
+                                <td>98</td>
+                                <td>14.2</td>
+                                <td><span class="badge badge-warning">Perlu Perhatian</span></td>
+                                <td>Perlu peningkatan gizi</td>
+                            </tr>
+                            <tr>
+                                <td>10 Okt 2025</td>
+                                <td>
+                                    <div class="flex gap-sm">
+                                        <div class="avatar avatar-sm">A</div>
+                                        <span>Aisyah Putri</span>
+                                    </div>
+                                </td>
+                                <td>83</td>
+                                <td>11.0</td>
+                                <td><span class="badge badge-success">Normal</span></td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal" id="addChildModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="heading-md">Tambah Data Anak</h3>
+                <button class="modal-close" onclick="closeModal('addChildModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-input" placeholder="Masukkan nama lengkap anak">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Jenis Kelamin</label>
+                    <select class="form-select">
+                        <option value="">Pilih jenis kelamin</option>
+                        <option value="L">Laki-laki</option>
+                        <option value="P">Perempuan</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Tanggal Lahir</label>
+                    <input type="date" class="form-input">
+                </div>
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label class="form-label">Tinggi Badan (cm)</label>
+                        <input type="number" class="form-input" placeholder="85">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Berat Badan (kg)</label>
+                        <input type="number" class="form-input" placeholder="11.5">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Catatan</label>
+                    <textarea class="form-textarea" placeholder="Catatan tambahan (opsional)"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('addChildModal')">Batal</button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                    Simpan Data
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="detailModal1">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="flex gap-md">
+                    <div class="avatar avatar-lg">A</div>
+                    <div>
+                        <h3 class="heading-md">Aisyah Putri</h3>
+                        <span class="badge badge-success">Normal</span>
+                    </div>
+                </div>
+                <button class="modal-close" onclick="closeModal('detailModal1')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="grid grid-2 mb-lg">
+                    <div class="child-info-item">
+                        <span class="text-xs">Nama Lengkap</span>
+                        <span class="text-md" style="font-weight: 500;">Aisyah Putri Santoso</span>
+                    </div>
+                    <div class="child-info-item">
+                        <span class="text-xs">Jenis Kelamin</span>
+                        <span class="text-md" style="font-weight: 500;">Perempuan</span>
+                    </div>
+                    <div class="child-info-item">
+                        <span class="text-xs">Tanggal Lahir</span>
+                        <span class="text-md" style="font-weight: 500;">15 Agustus 2022</span>
+                    </div>
+                    <div class="child-info-item">
+                        <span class="text-xs">Usia</span>
+                        <span class="text-md" style="font-weight: 500;">2 Tahun 3 Bulan</span>
+                    </div>
+                    <div class="child-info-item">
+                        <span class="text-xs">Tinggi Badan</span>
+                        <span class="text-md" style="font-weight: 500;">85 cm</span>
+                    </div>
+                    <div class="child-info-item">
+                        <span class="text-xs">Berat Badan</span>
+                        <span class="text-md" style="font-weight: 500;">11.5 kg</span>
+                    </div>
+                </div>
+
+                <h4 class="heading-sm mb-md">Riwayat Pertumbuhan</h4>
+                <div class="list-item">
+                    <div>
+                        <div class="text-md" style="font-weight: 500;">10 November 2025</div>
+                        <div class="text-xs">TB: 85 cm | BB: 11.5 kg</div>
+                    </div>
+                    <span class="badge badge-success">Normal</span>
+                </div>
+                <div class="list-item">
+                    <div>
+                        <div class="text-md" style="font-weight: 500;">10 Oktober 2025</div>
+                        <div class="text-xs">TB: 83 cm | BB: 11.0 kg</div>
+                    </div>
+                    <span class="badge badge-success">Normal</span>
+                </div>
+                <div class="list-item">
+                    <div>
+                        <div class="text-md" style="font-weight: 500;">10 September 2025</div>
+                        <div class="text-xs">TB: 81 cm | BB: 10.5 kg</div>
+                    </div>
+                    <span class="badge badge-success">Normal</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('detailModal1')">Tutup</button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-edit"></i>
+                    Edit Data
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="detailModal2">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="flex gap-md">
+                    <div class="avatar avatar-lg">R</div>
+                    <div>
+                        <h3 class="heading-md">Rizki Ahmad</h3>
+                        <span class="badge badge-warning">Perlu Perhatian</span>
+                    </div>
+                </div>
+                <button class="modal-close" onclick="closeModal('detailModal2')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="grid grid-2 mb-lg">
+                    <div class="child-info-item">
+                        <span class="text-xs">Nama Lengkap</span>
+                        <span class="text-md" style="font-weight: 500;">Rizki Ahmad Santoso</span>
+                    </div>
+                    <div class="child-info-item">
+                        <span class="text-xs">Jenis Kelamin</span>
+                        <span class="text-md" style="font-weight: 500;">Laki-laki</span>
+                    </div>
+                    <div class="child-info-item">
+                        <span class="text-xs">Tanggal Lahir</span>
+                        <span class="text-md" style="font-weight: 500;">10 Oktober 2020</span>
+                    </div>
+                    <div class="child-info-item">
+                        <span class="text-xs">Usia</span>
+                        <span class="text-md" style="font-weight: 500;">4 Tahun 1 Bulan</span>
+                    </div>
+                    <div class="child-info-item">
+                        <span class="text-xs">Tinggi Badan</span>
+                        <span class="text-md" style="font-weight: 500;">98 cm</span>
+                    </div>
+                    <div class="child-info-item">
+                        <span class="text-xs">Berat Badan</span>
+                        <span class="text-md" style="font-weight: 500;">14.2 kg</span>
+                    </div>
+                </div>
+
+                <div class="card" style="background: #fff3cd; border-color: #ffc107; margin-bottom: 20px;">
+                    <div class="flex gap-md">
+                        <i class="fas fa-exclamation-triangle" style="color: #f59e0b; font-size: 24px;"></i>
+                        <div>
+                            <h4 class="heading-sm mb-sm">Rekomendasi</h4>
+                            <p class="text-sm" style="color: var(--dark);">Tingkatkan asupan protein dan karbohidrat. Konsultasikan dengan tenaga kesehatan untuk program gizi yang tepat.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="heading-sm mb-md">Riwayat Pertumbuhan</h4>
+                <div class="list-item">
+                    <div>
+                        <div class="text-md" style="font-weight: 500;">10 November 2025</div>
+                        <div class="text-xs">TB: 98 cm | BB: 14.2 kg</div>
+                    </div>
+                    <span class="badge badge-warning">Perlu Perhatian</span>
+                </div>
+                <div class="list-item">
+                    <div>
+                        <div class="text-md" style="font-weight: 500;">10 Oktober 2025</div>
+                        <div class="text-xs">TB: 96 cm | BB: 13.8 kg</div>
+                    </div>
+                    <span class="badge badge-warning">Perlu Perhatian</span>
+                </div>
+                <div class="list-item">
+                    <div>
+                        <div class="text-md" style="font-weight: 500;">10 September 2025</div>
+                        <div class="text-xs">TB: 95 cm | BB: 13.5 kg</div>
+                    </div>
+                    <span class="badge badge-warning">Perlu Perhatian</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('detailModal2')">Tutup</button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-edit"></i>
+                    Edit Data
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(this.id);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

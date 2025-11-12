@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edukasi - StuntingCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="assets/js/sidebar.js" defer></script>
+</head>
+<body>
+    <header class="mobile-header">
+        <div class="mobile-header-left">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-logo">
+                <div class="icon-box icon-box-primary" style="width: 40px; height: 40px; font-size: 20px;">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h2>StuntingCare</h2>
+            </div>
+        </div>
+        <div class="avatar avatar-md">
+            <i class="fas fa-user"></i>
+        </div>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <div class="container">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <div class="mb-lg">
+                <h1 class="heading-xl mb-sm">Edukasi & Artikel</h1>
+                <p class="text-md text-gray">Informasi lengkap seputar stunting dan kesehatan anak</p>
+            </div>
+
+            <div class="flex-between gap-md mb-lg" style="flex-wrap: wrap;">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Cari artikel...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="category-filter mb-lg">
+                <button class="category-btn active">
+                    <i class="fas fa-grip"></i> Semua
+                </button>
+                <button class="category-btn">
+                    <i class="fas fa-utensils"></i> Gizi & Nutrisi
+                </button>
+                <button class="category-btn">
+                    <i class="fas fa-heartbeat"></i> Kesehatan
+                </button>
+                <button class="category-btn">
+                    <i class="fas fa-baby"></i> Tumbuh Kembang
+                </button>
+                <button class="category-btn">
+                    <i class="fas fa-shield-alt"></i> Pencegahan
+                </button>
+                <button class="category-btn">
+                    <i class="fas fa-users"></i> Tips Parenting
+                </button>
+            </div>
+
+            <div class="featured-article mb-lg">
+                <span class="featured-badge">
+                    <i class="fas fa-star"></i> Artikel Unggulan
+                </span>
+                <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=800" alt="Featured" class="featured-image">
+                <div class="featured-content">
+                    <div class="article-meta mb-md">
+                        <span class="article-category">Gizi & Nutrisi</span>
+                        <span class="article-date">
+                            <i class="fas fa-calendar"></i>
+                            10 November 2025
+                        </span>
+                        <span class="stats-badge">
+                            <i class="fas fa-eye"></i> 2.5k views
+                        </span>
+                    </div>
+                    <h2 class="heading-lg mb-md">1000 Hari Pertama Kehidupan: Periode Emas Mencegah Stunting</h2>
+                    <p class="text-md text-gray mb-md">
+                        Periode 1000 hari pertama kehidupan (HPK) dimulai sejak masa kehamilan hingga anak berusia 2 tahun. 
+                        Ini adalah fase krusial yang menentukan kualitas pertumbuhan dan perkembangan anak seumur hidup. 
+                        Kekurangan gizi pada periode ini dapat menyebabkan stunting yang dampaknya permanen.
+                    </p>
+                    <a href="artikel-detail.html" class="btn btn-primary">
+                        Baca Selengkapnya
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex-between mb-md">
+                <h2 class="heading-md">Artikel Terbaru</h2>
+                <span class="text-sm">24 artikel tersedia</span>
+            </div>
+
+            <div class="article-grid">
+                <div class="article-card" onclick="window.location.href='artikel-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400" alt="Article" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Gizi & Nutrisi</span>
+                            <span class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                08 Nov 2025
+                            </span>
+                        </div>
+                        <h3 class="article-title">
+                            10 Makanan Tinggi Protein untuk Mencegah Stunting pada Balita
+                        </h3>
+                        <p class="article-excerpt">
+                            Protein adalah nutrisi penting untuk pertumbuhan anak. Ketahui makanan tinggi protein yang mudah didapat dan terjangkau untuk mendukung tumbuh kembang optimal.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">DR</div>
+                                <span class="author-name">Dr. Rita Sari</span>
+                            </div>
+                            <a href="artikel-detail.html" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card" onclick="window.location.href='artikel-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?w=400" alt="Article" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Kesehatan</span>
+                            <span class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                07 Nov 2025
+                            </span>
+                        </div>
+                        <h3 class="article-title">
+                            Pentingnya Imunisasi Lengkap dalam Mencegah Stunting
+                        </h3>
+                        <p class="article-excerpt">
+                            Imunisasi tidak hanya melindungi dari penyakit, tetapi juga berperan penting dalam mencegah stunting. Pelajari jadwal imunisasi yang tepat untuk anak Anda.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">NS</div>
+                                <span class="author-name">Ns. Siti Nurhaliza</span>
+                            </div>
+                            <a href="artikel-detail.html" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card" onclick="window.location.href='artikel-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?w=400" alt="Article" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Tumbuh Kembang</span>
+                            <span class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                06 Nov 2025
+                            </span>
+                        </div>
+                        <h3 class="article-title">
+                            Memahami Grafik Pertumbuhan Anak: Kapan Harus Waspada?
+                        </h3>
+                        <p class="article-excerpt">
+                            Grafik pertumbuhan WHO membantu memantau perkembangan anak. Kenali tanda-tanda awal stunting melalui pemahaman yang tepat tentang grafik pertumbuhan.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">DR</div>
+                                <span class="author-name">Dr. Bambang</span>
+                            </div>
+                            <a href="artikel-detail.html" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card" onclick="window.location.href='artikel-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=400" alt="Article" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Pencegahan</span>
+                            <span class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                05 Nov 2025
+                            </span>
+                        </div>
+                        <h3 class="article-title">
+                            ASI Eksklusif 6 Bulan: Fondasi Kuat Cegah Stunting
+                        </h3>
+                        <p class="article-excerpt">
+                            ASI eksklusif adalah kunci utama pencegahan stunting. Pahami manfaat luar biasa ASI dan cara memastikan bayi mendapat ASI yang cukup.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">BW</div>
+                                <span class="author-name">Bidan Wulan</span>
+                            </div>
+                            <a href="artikel-detail.html" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card" onclick="window.location.href='artikel-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=400" alt="Article" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Tips Parenting</span>
+                            <span class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                04 Nov 2025
+                            </span>
+                        </div>
+                        <h3 class="article-title">
+                            Cara Kreatif Mengatasi Anak yang Susah Makan
+                        </h3>
+                        <p class="article-excerpt">
+                            Anak susah makan adalah tantangan umum orang tua. Temukan strategi efektif dan cara kreatif untuk meningkatkan nafsu makan anak tanpa paksaan.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">PS</div>
+                                <span class="author-name">Psikolog Sarah</span>
+                            </div>
+                            <a href="artikel-detail.html" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card" onclick="window.location.href='artikel-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400" alt="Article" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Kesehatan</span>
+                            <span class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                03 Nov 2025
+                            </span>
+                        </div>
+                        <h3 class="article-title">
+                            Dampak Jangka Panjang Stunting: Yang Perlu Orang Tua Ketahui
+                        </h3>
+                        <p class="article-excerpt">
+                            Stunting bukan hanya soal tinggi badan. Pahami dampak jangka panjang stunting terhadap kognitif, produktivitas, dan kesehatan anak di masa depan.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">DR</div>
+                                <span class="author-name">Dr. Ahmad Fauzi</span>
+                            </div>
+                            <a href="artikel-detail.html" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card" onclick="window.location.href='artikel-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400" alt="Article" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Gizi & Nutrisi</span>
+                            <span class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                02 Nov 2025
+                            </span>
+                        </div>
+                        <h3 class="article-title">
+                            Resep MPASI Bergizi untuk Bayi 6-12 Bulan
+                        </h3>
+                        <p class="article-excerpt">
+                            MPASI yang tepat sangat penting untuk mencegah stunting. Dapatkan inspirasi resep MPASI bergizi lengkap yang mudah dibuat di rumah.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">AG</div>
+                                <span class="author-name">Ahli Gizi Devi</span>
+                            </div>
+                            <a href="artikel-detail.html" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card" onclick="window.location.href='artikel-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400" alt="Article" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Pencegahan</span>
+                            <span class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                01 Nov 2025
+                            </span>
+                        </div>
+                        <h3 class="article-title">
+                            Peran Sanitasi dan Air Bersih dalam Mencegah Stunting
+                        </h3>
+                        <p class="article-excerpt">
+                            Stunting tidak hanya soal makanan. Sanitasi buruk dan air kotor dapat menyebabkan infeksi berulang yang menghambat penyerapan nutrisi.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">PK</div>
+                                <span class="author-name">Prof. Kusuma</span>
+                            </div>
+                            <a href="artikel-detail.html" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card" onclick="window.location.href='artikel-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400" alt="Article" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Tumbuh Kembang</span>
+                            <span class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                31 Okt 2025
+                            </span>
+                        </div>
+                        <h3 class="article-title">
+                            Stimulasi Dini: Kunci Optimalkan Tumbuh Kembang Anak
+                        </h3>
+                        <p class="article-excerpt">
+                            Selain nutrisi, stimulasi dini sangat penting untuk perkembangan otak anak. Pelajari cara memberikan stimulasi yang tepat sesuai usia.
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-author">
+                                <div class="author-avatar">PS</div>
+                                <span class="author-name">Psikolog Rina</span>
+                            </div>
+                            <a href="artikel-detail.html" class="read-more">
+                                Baca <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-center" style="margin-top: 40px;">
+                <button class="btn btn-outline">
+                    <i class="fas fa-sync"></i>
+                    Muat Lebih Banyak
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.querySelector('.search-btn').addEventListener('click', function() {
+            const searchValue = document.querySelector('.search-input').value;
+            console.log('Searching for:', searchValue);
+        });
+
+        document.querySelector('.search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const searchValue = this.value;
+                console.log('Searching for:', searchValue);
+            }
+        });
+    </script>
+</body>
+</html>

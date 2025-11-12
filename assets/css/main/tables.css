@@ -1,0 +1,30 @@
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: left;
+    padding: 16px;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray);
+    border-bottom: 2px solid var(--border);
+}
+
+.table td {
+    padding: 18px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--dark);
+}
+
+.table tr:hover {
+    background: var(--light-gray);
+}

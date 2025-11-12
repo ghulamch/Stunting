@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan - StuntingCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="assets/js/sidebar.js" defer></script>
+</head>
+<body>
+    <header class="mobile-header">
+        <div class="mobile-header-left">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-logo">
+                <div class="icon-box icon-box-primary" style="width: 40px; height: 40px; font-size: 20px;">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h2>StuntingCare</h2>
+            </div>
+        </div>
+        <div class="avatar avatar-md">
+            <i class="fas fa-user"></i>
+        </div>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <div class="container">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <div class="mb-lg">
+                <h1 class="heading-xl mb-sm">Pengaturan</h1>
+                <p class="text-md text-gray">Kelola akun dan preferensi aplikasi Anda</p>
+            </div>
+
+            <div class="settings-grid">
+                <div class="settings-section">
+                    <div class="settings-section-header">
+                        <div class="settings-section-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h2 class="settings-section-title">Profil Pengguna</h2>
+                    </div>
+
+                    <div class="profile-display">
+                        <div class="profile-avatar-large">ZK</div>
+                        <div class="profile-info">
+                            <div class="profile-name">Zaina Khairunnisa</div>
+                            <div class="profile-email">zaina.khairunnisa@email.com</div>
+                            <button class="btn btn-sm btn-primary" onclick="openModal('editProfileModal')">
+                                <i class="fas fa-edit"></i>
+                                Edit Profil
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Nomor Telepon</div>
+                            <div class="settings-item-description">+62 812-3456-7890</div>
+                        </div>
+                        <button class="settings-action-btn">
+                            <i class="fas fa-edit"></i>
+                            Ubah
+                        </button>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Alamat</div>
+                            <div class="settings-item-description">Jati, Sidoarjo, Jawa Timur</div>
+                        </div>
+                        <button class="settings-action-btn">
+                            <i class="fas fa-edit"></i>
+                            Ubah
+                        </button>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="settings-section-header">
+                        <div class="settings-section-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h2 class="settings-section-title">Pengaturan Notifikasi</h2>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Pengingat Jadwal Kontrol</div>
+                            <div class="settings-item-description">
+                                Dapatkan notifikasi pengingat sebelum jadwal kontrol
+                            </div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Hasil Pengukuran</div>
+                            <div class="settings-item-description">
+                                Notifikasi saat hasil pengukuran tersedia
+                            </div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Artikel & Tips Baru</div>
+                            <div class="settings-item-description">
+                                Pemberitahuan artikel edukasi dan tips terbaru
+                            </div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Notifikasi Email</div>
+                            <div class="settings-item-description">
+                                Terima rangkuman mingguan via email
+                            </div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Notifikasi Push</div>
+                            <div class="settings-item-description">
+                                Aktifkan notifikasi push di perangkat
+                            </div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="settings-section-header">
+                        <div class="settings-section-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h2 class="settings-section-title">Keamanan & Privasi</h2>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Ubah Kata Sandi</div>
+                            <div class="settings-item-description">
+                                Perbarui kata sandi akun Anda secara berkala
+                            </div>
+                        </div>
+                        <button class="settings-action-btn" onclick="openModal('changePasswordModal')">
+                            <i class="fas fa-key"></i>
+                            Ubah
+                        </button>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Verifikasi Dua Langkah</div>
+                            <div class="settings-item-description">
+                                Tingkatkan keamanan dengan verifikasi 2 langkah
+                            </div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Riwayat Login</div>
+                            <div class="settings-item-description">
+                                Lihat aktivitas login akun Anda
+                            </div>
+                        </div>
+                        <button class="settings-action-btn">
+                            <i class="fas fa-history"></i>
+                            Lihat
+                        </button>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Privasi Data</div>
+                            <div class="settings-item-description">
+                                Kelola bagaimana data Anda digunakan
+                            </div>
+                        </div>
+                        <button class="settings-action-btn">
+                            <i class="fas fa-lock"></i>
+                            Kelola
+                        </button>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="settings-section-header">
+                        <div class="settings-section-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h2 class="settings-section-title">Preferensi Aplikasi</h2>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Bahasa</div>
+                            <div class="settings-item-description">
+                                Pilih bahasa yang Anda gunakan
+                            </div>
+                        </div>
+                        <select class="settings-select">
+                            <option value="id" selected>Bahasa Indonesia</option>
+                            <option value="en">English</option>
+                            <option value="jv">Basa Jawa</option>
+                        </select>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Format Tanggal</div>
+                            <div class="settings-item-description">
+                                Pilih format tampilan tanggal
+                            </div>
+                        </div>
+                        <select class="settings-select">
+                            <option value="dd/mm/yyyy" selected>DD/MM/YYYY</option>
+                            <option value="mm/dd/yyyy">MM/DD/YYYY</option>
+                            <option value="yyyy-mm-dd">YYYY-MM-DD</option>
+                        </select>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Satuan Berat</div>
+                            <div class="settings-item-description">
+                                Satuan yang digunakan untuk berat badan
+                            </div>
+                        </div>
+                        <select class="settings-select">
+                            <option value="kg" selected>Kilogram (kg)</option>
+                            <option value="lb">Pound (lb)</option>
+                        </select>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Satuan Tinggi</div>
+                            <div class="settings-item-description">
+                                Satuan yang digunakan untuk tinggi badan
+                            </div>
+                        </div>
+                        <select class="settings-select">
+                            <option value="cm" selected>Centimeter (cm)</option>
+                            <option value="in">Inch (in)</option>
+                        </select>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Mode Gelap</div>
+                            <div class="settings-item-description">
+                                Aktifkan tema gelap untuk tampilan nyaman di malam hari
+                            </div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="settings-section-header">
+                        <div class="settings-section-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h2 class="settings-section-title">Data & Penyimpanan</h2>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Backup Data</div>
+                            <div class="settings-item-description">
+                                Cadangkan data anak Anda secara otomatis
+                            </div>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Ekspor Data</div>
+                            <div class="settings-item-description">
+                                Unduh semua data dalam format PDF atau Excel
+                            </div>
+                        </div>
+                        <button class="settings-action-btn">
+                            <i class="fas fa-download"></i>
+                            Ekspor
+                        </button>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Hapus Cache</div>
+                            <div class="settings-item-description">
+                                Bersihkan data cache untuk menghemat ruang penyimpanan
+                            </div>
+                        </div>
+                        <button class="settings-action-btn">
+                            <i class="fas fa-broom"></i>
+                            Hapus
+                        </button>
+                    </div>
+
+                    <div class="settings-item">
+                        <div class="settings-item-info">
+                            <div class="settings-item-label">Hapus Akun</div>
+                            <div class="settings-item-description">
+                                Hapus akun dan semua data secara permanen
+                            </div>
+                        </div>
+                        <button class="settings-action-btn danger" onclick="confirmDeleteAccount()">
+                            <i class="fas fa-trash-alt"></i>
+                            Hapus Akun
+                        </button>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="settings-section-header">
+                        <div class="settings-section-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h2 class="settings-section-title">Tentang Aplikasi</h2>
+                    </div>
+
+                    <div class="about-info">
+                        <div class="about-item">
+                            <span class="about-label">Versi Aplikasi</span>
+                            <span class="about-value">1.0.0</span>
+                        </div>
+                        <div class="about-item">
+                            <span class="about-label">Build Number</span>
+                            <span class="about-value">2025.11.12</span>
+                        </div>
+                        <div class="about-item">
+                            <span class="about-label">Terakhir Diperbarui</span>
+                            <span class="about-value">12 November 2025</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <button class="settings-action-btn" style="width: 100%; justify-content: center; margin-bottom: 8px;">
+                            <i class="fas fa-file-alt"></i>
+                            Kebijakan Privasi
+                        </button>
+                        <button class="settings-action-btn" style="width: 100%; justify-content: center; margin-bottom: 8px;">
+                            <i class="fas fa-gavel"></i>
+                            Syarat & Ketentuan
+                        </button>
+                        <button class="settings-action-btn" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-headset"></i>
+                            Hubungi Dukungan
+                        </button>
+                    </div>
+                </div>
+
+                <div class="settings-section logout-section">
+                    <button class="logout-btn" onclick="confirmLogout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Keluar dari Akun
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal" id="editProfileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="heading-md">Edit Profil</h3>
+                <button class="modal-close" onclick="closeModal('editProfileModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-input" value="Zaina Khairunnisa">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" value="zaina.khairunnisa@email.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Nomor Telepon</label>
+                    <input type="tel" class="form-input" value="+62 812-3456-7890">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Alamat</label>
+                    <textarea class="form-textarea">Jati, Sidoarjo, Jawa Timur</textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('editProfileModal')">Batal</button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                    Simpan Perubahan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="changePasswordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="heading-md">Ubah Kata Sandi</h3>
+                <button class="modal-close" onclick="closeModal('changePasswordModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Kata Sandi Lama</label>
+                    <input type="password" class="form-input" placeholder="Masukkan kata sandi lama">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Kata Sandi Baru</label>
+                    <input type="password" class="form-input" placeholder="Masukkan kata sandi baru">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Konfirmasi Kata Sandi Baru</label>
+                    <input type="password" class="form-input" placeholder="Konfirmasi kata sandi baru">
+                </div>
+                <div class="info-box info-box-info" style="margin-top: 16px;">
+                    <i class="fas fa-info-circle info-box-icon"></i>
+                    <div class="info-box-content">
+                        <p style="font-size: 13px; margin: 0;">
+                            Kata sandi harus minimal 8 karakter dan mengandung kombinasi huruf, angka, dan simbol.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('changePasswordModal')">Batal</button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-key"></i>
+                    Ubah Kata Sandi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(this.id);
+                }
+            });
+        });
+
+        function confirmLogout() {
+            if (confirm('Apakah Anda yakin ingin keluar dari akun?')) {
+                window.location.href = 'login.html';
+            }
+        }
+
+        function confirmDeleteAccount() {
+            if (confirm('PERINGATAN: Tindakan ini akan menghapus akun dan semua data Anda secara permanen. Apakah Anda yakin ingin melanjutkan?')) {
+                if (confirm('Konfirmasi sekali lagi. Apakah Anda benar-benar yakin ingin menghapus akun?')) {
+                    alert('Akun Anda telah dihapus.');
+                    window.location.href = 'login.html';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

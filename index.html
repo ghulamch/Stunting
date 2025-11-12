@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Monitoring Stunting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/sidebar.js" defer></script>
+
+</head>
+<body>
+    <header class="mobile-header">
+        <div class="mobile-header-left">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-logo">
+                <div class="icon-box icon-box-primary" style="width: 40px; height: 40px; font-size: 20px;">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h2>StuntingCare</h2>
+            </div>
+        </div>
+        <div class="avatar avatar-md">
+            <i class="fas fa-user"></i>
+        </div>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <div class="container">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content animate-fade">
+            <div class="flex-between mb-lg">
+                <div>
+                    <h1 class="heading-xl mb-sm">Dashboard Monitoring</h1>
+                    <p class="text-md text-gray">Selamat datang kembali, Budi!</p>
+                </div>
+                <div class="card card-sm card-no-hover" style="padding: 12px 24px 12px 12px; border-radius: var(--radius-full); box-shadow: var(--shadow-sm);">
+                    <div class="flex gap-md">
+                        <div class="avatar avatar-lg">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <div class="text-md" style="font-weight: 600;">Budi Santoso</div>
+                            <div class="text-xs">Orang Tua</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-4 mb-lg">
+                <div class="card">
+                    <div class="flex gap-md">
+                        <div class="icon-box icon-box-lg icon-box-primary">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm mb-sm">Jumlah Anak</h3>
+                            <p class="heading-lg">2</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="flex gap-md">
+                        <div class="icon-box icon-box-lg icon-box-success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm mb-sm">Status Normal</h3>
+                            <p class="heading-lg">1</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="flex gap-md">
+                        <div class="icon-box icon-box-lg icon-box-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm mb-sm">Perlu Perhatian</h3>
+                            <p class="heading-lg">1</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="flex gap-md">
+                        <div class="icon-box icon-box-lg icon-box-danger">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm mb-sm">Kontrol Berikutnya</h3>
+                            <p class="heading-lg">5 Hari</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-2 mb-lg">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon-box icon-box-sm icon-box-primary">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="heading-sm">Grafik Pertumbuhan</h3>
+                    </div>
+                    <div class="flex-center" style="height: 300px;">
+                        <i class="fas fa-chart-area" style="font-size: 80px; opacity: 0.2; color: var(--primary);"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon-box icon-box-sm icon-box-success">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <h3 class="heading-sm">Nutrisi Harian</h3>
+                    </div>
+                    
+                    <div class="list-item">
+                        <div class="flex gap-md">
+                            <div class="icon-box icon-box-md icon-box-light">
+                                <i class="fas fa-drumstick-bite"></i>
+                            </div>
+                            <div>
+                                <div class="text-md" style="font-weight: 500;">Protein</div>
+                                <div class="text-xs">75% dari target</div>
+                            </div>
+                        </div>
+                        <div class="text-lg" style="font-weight: 600;">45g</div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="flex gap-md">
+                            <div class="icon-box icon-box-md icon-box-light">
+                                <i class="fas fa-bread-slice"></i>
+                            </div>
+                            <div>
+                                <div class="text-md" style="font-weight: 500;">Karbohidrat</div>
+                                <div class="text-xs">60% dari target</div>
+                            </div>
+                        </div>
+                        <div class="text-lg" style="font-weight: 600;">120g</div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="flex gap-md">
+                            <div class="icon-box icon-box-md icon-box-light">
+                                <i class="fas fa-pills"></i>
+                            </div>
+                            <div>
+                                <div class="text-md" style="font-weight: 500;">Vitamin</div>
+                                <div class="text-xs">100% dari target</div>
+                            </div>
+                        </div>
+                        <div class="text-lg" style="font-weight: 600; color: var(--secondary);">✓</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-lg">
+                <div class="card-header">
+                    <div class="icon-box icon-box-sm icon-box-primary">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="heading-sm">Data Anak</h3>
+                </div>
+                
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Umur</th>
+                                <th>Tinggi (cm)</th>
+                                <th>Berat (kg)</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="flex gap-sm">
+                                        <div class="avatar avatar-md">A</div>
+                                        <span style="font-weight: 500;">Aisyah Putri</span>
+                                    </div>
+                                </td>
+                                <td>2 Tahun 3 Bulan</td>
+                                <td>85</td>
+                                <td>11.5</td>
+                                <td><span class="badge badge-success">Normal</span></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm">
+                                        <i class="fas fa-eye"></i> Detail
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="flex gap-sm">
+                                        <div class="avatar avatar-md">R</div>
+                                        <span style="font-weight: 500;">Rizki Ahmad</span>
+                                    </div>
+                                </td>
+                                <td>4 Tahun 1 Bulan</td>
+                                <td>98</td>
+                                <td>14.2</td>
+                                <td><span class="badge badge-warning">Perlu Perhatian</span></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm">
+                                        <i class="fas fa-eye"></i> Detail
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-box icon-box-sm icon-box-danger">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="heading-sm">Jadwal Kontrol Mendatang</h3>
+                </div>
+                
+                <div class="list-item">
+                    <div class="flex gap-md">
+                        <div class="icon-box icon-box-md icon-box-light">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <div>
+                            <div class="text-md" style="font-weight: 500;">Pemeriksaan Rutin - Aisyah</div>
+                            <div class="text-xs">Posyandu Melati 1</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="text-md" style="font-weight: 600;">15 Nov 2025</div>
+                        <div class="text-xs">09:00 WIB</div>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="flex gap-md">
+                        <div class="icon-box icon-box-md icon-box-light">
+                            <i class="fas fa-syringe"></i>
+                        </div>
+                        <div>
+                            <div class="text-md" style="font-weight: 500;">Imunisasi - Rizki</div>
+                            <div class="text-xs">Puskesmas Kecamatan</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="text-md" style="font-weight: 600;">20 Nov 2025</div>
+                        <div class="text-xs">10:30 WIB</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

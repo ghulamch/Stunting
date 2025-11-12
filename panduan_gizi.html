@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Gizi - StuntingCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="additional-styles.css">
+    <script src="assets/js/sidebar.js" defer></script>
+</head>
+<body>
+    <header class="mobile-header">
+        <div class="mobile-header-left">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-logo">
+                <div class="icon-box icon-box-primary" style="width: 40px; height: 40px; font-size: 20px;">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h2>StuntingCare</h2>
+            </div>
+        </div>
+        <div class="avatar avatar-md">
+            <i class="fas fa-user"></i>
+        </div>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <div class="container">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <div class="flex-between mb-lg">
+                <div>
+                    <h1 class="heading-xl mb-sm">Panduan Gizi</h1>
+                    <p class="text-md text-gray">Rekomendasi makanan bergizi untuk mencegah stunting</p>
+                </div>
+            </div>
+
+            <div class="card mb-lg card-no-hover">
+                <div class="flex-between flex-wrap gap-md">
+                    <h3 class="heading-sm">Kategori Usia</h3>
+                    <div class="flex gap-sm flex-wrap">
+                        <button class="btn btn-light active">0-6 Bulan</button>
+                        <button class="btn btn-light">6-12 Bulan</button>
+                        <button class="btn btn-light">1-2 Tahun</button>
+                        <button class="btn btn-light">2-5 Tahun</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nutrition-category">
+                <h2 class="nutrition-category-title">
+                    <i class="fas fa-bread-slice"></i>
+                    Makanan Pokok
+                </h2>
+                <div class="nutrition-grid">
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-bowl-rice"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Nasi Putih</h4>
+                                <p class="nutrition-serving">1 mangkuk kecil (100g)</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Sumber karbohidrat utama untuk energi. Mengandung 130 kalori, mudah dicerna dan cocok untuk anak-anak.
+                        </p>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-wheat-awn"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Roti Gandum</h4>
+                                <p class="nutrition-serving">2 lembar</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Kaya serat dan vitamin B kompleks. Membantu pencernaan dan memberikan energi tahan lama.
+                        </p>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Kentang</h4>
+                                <p class="nutrition-serving">1 buah sedang (150g)</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Tinggi vitamin C dan kalium. Baik untuk pertumbuhan dan sistem kekebalan tubuh anak.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nutrition-category">
+                <h2 class="nutrition-category-title">
+                    <i class="fas fa-drumstick-bite"></i>
+                    Protein Hewani
+                </h2>
+                <div class="nutrition-grid">
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-egg"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Telur Ayam</h4>
+                                <p class="nutrition-serving">1-2 butir</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Sumber protein lengkap dengan 9 asam amino esensial. Kaya vitamin D, B12, dan kolin untuk perkembangan otak.
+                        </p>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-fish"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Ikan Salmon</h4>
+                                <p class="nutrition-serving">50-75g</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Tinggi omega-3 (DHA & EPA) untuk perkembangan otak dan mata. Sumber vitamin D dan selenium.
+                        </p>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-drumstick-bite"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Daging Ayam</h4>
+                                <p class="nutrition-serving">50-75g</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Protein berkualitas tinggi dengan lemak rendah. Kaya vitamin B6, niasin, dan selenium untuk pertumbuhan.
+                        </p>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-cow"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Daging Sapi</h4>
+                                <p class="nutrition-serving">50g</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Sumber zat besi heme yang mudah diserap tubuh. Tinggi zinc dan vitamin B12 untuk mencegah anemia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nutrition-category">
+                <h2 class="nutrition-category-title">
+                    <i class="fas fa-leaf"></i>
+                    Protein Nabati
+                </h2>
+                <div class="nutrition-grid">
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Tempe</h4>
+                                <p class="nutrition-serving">2-3 potong (50g)</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Tinggi protein nabati dan probiotik. Mudah dicerna, mengandung vitamin B12 dan isoflavon.
+                        </p>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Tahu</h4>
+                                <p class="nutrition-serving">2-3 potong (75g)</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Sumber kalsium dan protein. Rendah kalori, cocok untuk anak yang perlu kontrol berat badan.
+                        </p>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Kacang Hijau</h4>
+                                <p class="nutrition-serving">1 mangkuk (100g)</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Kaya folat, zat besi, dan magnesium. Baik untuk pembentukan sel darah merah dan energi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nutrition-category">
+                <h2 class="nutrition-category-title">
+                    <i class="fas fa-carrot"></i>
+                    Sayuran
+                </h2>
+                <div class="nutrition-grid">
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Bayam</h4>
+                                <p class="nutrition-serving">1 mangkuk (100g)</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Kaya zat besi, kalsium, dan vitamin A. Mencegah anemia dan baik untuk penglihatan.
+                        </p>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-carrot"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Wortel</h4>
+                                <p class="nutrition-serving">1 buah sedang (70g)</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Tinggi beta-karoten (vitamin A). Mendukung penglihatan, sistem imun, dan pertumbuhan sel.
+                        </p>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-broccoli"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Brokoli</h4>
+                                <p class="nutrition-serving">½ mangkuk (50g)</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Kaya vitamin C, K, dan folat. Mengandung antioksidan untuk sistem kekebalan tubuh.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nutrition-category">
+                <h2 class="nutrition-category-title">
+                    <i class="fas fa-apple-whole"></i>
+                    Buah-buahan
+                </h2>
+                <div class="nutrition-grid">
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-lemon"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Jeruk</h4>
+                                <p class="nutrition-serving">1 buah sedang</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Tinggi vitamin C untuk sistem imun. Membantu penyerapan zat besi dari makanan lain.
+                        </p>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-apple-whole"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Pisang</h4>
+                                <p class="nutrition-serving">1 buah</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Sumber energi cepat dengan potasium tinggi. Baik untuk pencernaan dan kesehatan jantung.
+                        </p>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Alpukat</h4>
+                                <p class="nutrition-serving">½ buah</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Kaya lemak sehat (omega-3), vitamin E dan folat. Mendukung perkembangan otak dan sel.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nutrition-category">
+                <h2 class="nutrition-category-title">
+                    <i class="fas fa-glass-water"></i>
+                    Susu & Produk Olahan
+                </h2>
+                <div class="nutrition-grid">
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-bottle-droplet"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Susu Sapi</h4>
+                                <p class="nutrition-serving">2 gelas (400ml)</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Sumber kalsium, protein, dan vitamin D. Penting untuk pertumbuhan tulang dan gigi.
+                        </p>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-jar"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Yogurt</h4>
+                                <p class="nutrition-serving">1 mangkuk (150g)</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Mengandung probiotik untuk kesehatan pencernaan. Tinggi protein dan kalsium.
+                        </p>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <div class="nutrition-card-header">
+                            <div class="nutrition-icon">
+                                <i class="fas fa-cheese"></i>
+                            </div>
+                            <div>
+                                <h4 class="nutrition-name">Keju</h4>
+                                <p class="nutrition-serving">30g</p>
+                            </div>
+                        </div>
+                        <p class="nutrition-benefits">
+                            Tinggi kalsium dan protein. Membantu pembentukan tulang dan gigi yang kuat.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-lg card-no-hover">
+                <div class="card-header">
+                    <div class="icon-box icon-box-sm icon-box-warning">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="heading-sm">Tips Pemberian Makanan</h3>
+                </div>
+                <div class="info-box info-box-info">
+                    <i class="fas fa-info-circle info-box-icon"></i>
+                    <div class="info-box-content">
+                        <h4>Perhatikan Hal Berikut</h4>
+                        <p>
+                            • Berikan makanan bervariasi setiap hari untuk memenuhi kebutuhan gizi lengkap<br>
+                            • Porsi disesuaikan dengan usia dan kebutuhan kalori anak<br>
+                            • Hindari makanan tinggi gula, garam, dan lemak jenuh berlebihan<br>
+                            • Biasakan makan 3x sehari dengan 2x snack sehat<br>
+                            • Pastikan anak minum air putih yang cukup (6-8 gelas per hari)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.btn-light').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.btn-light').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

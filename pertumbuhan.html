@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafik Pertumbuhan - StuntingCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/sidebar.js" defer></script>
+</head>
+<body>
+    <header class="mobile-header">
+        <div class="mobile-header-left">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-logo">
+                <div class="icon-box icon-box-primary" style="width: 40px; height: 40px; font-size: 20px;">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h2>StuntingCare</h2>
+            </div>
+        </div>
+        <div class="avatar avatar-md">
+            <i class="fas fa-user"></i>
+        </div>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <div class="container">
+        <div id="sidebar-container"></div>
+        <main class="main-content">
+            <div class="mb-lg">
+                <h1 class="heading-xl mb-sm">Grafik Pertumbuhan</h1>
+                <p class="text-md text-gray">Pantau perkembangan pertumbuhan anak secara visual</p>
+            </div>
+
+            <div class="card mb-lg card-no-hover">
+                <div class="flex-between flex-wrap gap-md">
+                    <div class="filter-group">
+                        <span class="text-sm" style="font-weight: 500;">Pilih Anak:</span>
+                        <div class="select-child active" onclick="selectChild(this, 'aisyah')">
+                            <div class="avatar avatar-sm">A</div>
+                            <span style="font-weight: 500;">Aisyah</span>
+                        </div>
+                        <div class="select-child" onclick="selectChild(this, 'rizki')">
+                            <div class="avatar avatar-sm">R</div>
+                            <span style="font-weight: 500;">Rizki</span>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <button class="btn btn-light active" onclick="changeChartType('weight')">Berat Badan</button>
+                        <button class="btn btn-light" onclick="changeChartType('height')">Tinggi Badan</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-2 mb-lg">
+                <div class="card" style="grid-column: 1 / -1;">
+                    <div class="card-header">
+                        <div class="icon-box icon-box-sm icon-box-primary">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="heading-sm">Grafik Perkembangan</h3>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon-box icon-box-sm icon-box-success">
+                            <i class="fas fa-weight"></i>
+                        </div>
+                        <h3 class="heading-sm">Statistik Berat Badan</h3>
+                    </div>
+                    <div class="flex-col gap-md">
+                        <div class="flex-between">
+                            <span class="text-sm">Berat Saat Ini</span>
+                            <span class="text-lg" style="font-weight: 600;">11.5 kg</span>
+                        </div>
+                        <div class="flex-between">
+                            <span class="text-sm">Berat 3 Bulan Lalu</span>
+                            <span class="text-md" style="font-weight: 500;">10.5 kg</span>
+                        </div>
+                        <div class="flex-between">
+                            <span class="text-sm">Pertumbuhan</span>
+                            <span class="badge badge-success">
+                                <i class="fas fa-arrow-up"></i> +1.0 kg
+                            </span>
+                        </div>
+                        <div class="flex-between">
+                            <span class="text-sm">Status</span>
+                            <span class="badge badge-success">Normal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon-box icon-box-sm icon-box-warning">
+                            <i class="fas fa-ruler-vertical"></i>
+                        </div>
+                        <h3 class="heading-sm">Statistik Tinggi Badan</h3>
+                    </div>
+                    <div class="flex-col gap-md">
+                        <div class="flex-between">
+                            <span class="text-sm">Tinggi Saat Ini</span>
+                            <span class="text-lg" style="font-weight: 600;">85 cm</span>
+                        </div>
+                        <div class="flex-between">
+                            <span class="text-sm">Tinggi 3 Bulan Lalu</span>
+                            <span class="text-md" style="font-weight: 500;">81 cm</span>
+                        </div>
+                        <div class="flex-between">
+                            <span class="text-sm">Pertumbuhan</span>
+                            <span class="badge badge-success">
+                                <i class="fas fa-arrow-up"></i> +4 cm
+                            </span>
+                        </div>
+                        <div class="flex-between">
+                            <span class="text-sm">Status</span>
+                            <span class="badge badge-success">Normal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="flex gap-md">
+                        <div class="icon-box icon-box-md icon-box-primary">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs">Usia Anak</span>
+                            <div class="text-lg" style="font-weight: 600;">2 Tahun 3 Bulan</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="flex gap-md">
+                        <div class="icon-box icon-box-md icon-box-success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs">Total Pemeriksaan</span>
+                            <div class="text-lg" style="font-weight: 600;">8 Kali</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="flex gap-md">
+                        <div class="icon-box icon-box-md icon-box-warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs">Pemeriksaan Terakhir</span>
+                            <div class="text-lg" style="font-weight: 600;">10 Nov 2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function selectChild(element, child) {
+            document.querySelectorAll('.select-child').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            updateChart(child);
+        }
+
+        function changeChartType(type) {
+            document.querySelectorAll('.filter-group .btn-light').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        const ctx = document.getElementById('growthChart').getContext('2d');
+        const growthChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jul', 'Ags', 'Sep', 'Okt', 'Nov'],
+                datasets: [{
+                    label: 'Berat Badan (kg)',
+                    data: [10.0, 10.3, 10.5, 11.0, 11.5],
+                    borderColor: '#dc2626',
+                    backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#dc2626',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            font: {
+                                family: 'Poppins',
+                                size: 14
+                            },
+                            padding: 20,
+                            usePointStyle: true
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: '#1e293b',
+                        titleFont: {
+                            family: 'Poppins',
+                            size: 14
+                        },
+                        bodyFont: {
+                            family: 'Poppins',
+                            size: 13
+                        },
+                        padding: 12,
+                        cornerRadius: 8
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            color: '#e2e8f0'
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Poppins',
+                                size: 12
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Poppins',
+                                size: 12
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        function updateChart(child) {
+            if (child === 'aisyah') {
+                growthChart.data.datasets[0].data = [10.0, 10.3, 10.5, 11.0, 11.5];
+            } else {
+                growthChart.data.datasets[0].data = [13.0, 13.3, 13.5, 13.8, 14.2];
+            }
+            growthChart.update();
+        }
+    </script>
+</body>
+</html>
