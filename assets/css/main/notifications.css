@@ -271,14 +271,53 @@
     .notification-tabs {
         flex-wrap: nowrap;
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .notification-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .notification-tab {
+        flex-shrink: 0;
     }
 
     .notification-actions {
         flex-direction: column;
+        width: 100%;
+    }
+
+    .notification-actions .btn {
+        width: 100%;
+        justify-content: center;
     }
 
     .notification-item {
-        flex-direction: column;
-        gap: 12px;
+        padding: 16px;
+    }
+
+    .notification-icon-wrapper {
+        align-self: flex-start;
+    }
+
+    .notification-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .notification-title {
+        font-size: 14px;
+    }
+
+    .notification-message {
+        font-size: 13px;
+    }
+
+    .notification-menu {
+        position: absolute;
+        top: 16px;
+        right: 16px;
     }
 }

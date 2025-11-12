@@ -7,9 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/additional-styles.css">
-
-    <script src="assets/js/sidebar.js" defer></script>
+    <scriipt src="assets/js/sidebar.js" defer></script>
 </head>
 <body>
     <header class="mobile-header">
@@ -65,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="notification-list">
+            <div class="notification-list" id="notificationList">
                 <div class="notification-item unread" data-status="unread">
                     <div class="notification-icon-wrapper">
                         <div class="notification-icon reminder">
@@ -392,6 +390,7 @@
         function deleteNotification(btn) {
             const notificationItem = btn.closest('.notification-item');
             notificationItem.style.opacity = '0';
+            notificationItem.style.transform = 'translateX(-20px)';
             setTimeout(() => {
                 notificationItem.remove();
                 updateBadges();
@@ -412,6 +411,7 @@
             if (confirm('Apakah Anda yakin ingin menghapus semua notifikasi?')) {
                 document.querySelectorAll('.notification-item').forEach(item => {
                     item.style.opacity = '0';
+                    item.style.transform = 'translateX(-20px)';
                 });
                 setTimeout(() => {
                     document.querySelectorAll('.notification-item').forEach(item => {
@@ -427,13 +427,16 @@
             const allCount = document.querySelectorAll('.notification-item').length;
             const unreadCount = document.querySelectorAll('.notification-item.unread').length;
             
-            document.querySelector('[data-tab="all"] .badge').textContent = allCount;
-            document.querySelector('[data-tab="unread"] .badge').textContent = unreadCount;
+            const allBadge = document.querySelector('[data-tab="all"] .badge');
+            const unreadBadge = document.querySelector('[data-tab="unread"] .badge');
+            
+            if (allBadge) allBadge.textContent = allCount;
+            if (unreadBadge) unreadBadge.textContent = unreadCount;
         }
 
         function checkEmptyState() {
             const hasNotifications = document.querySelectorAll('.notification-item').length > 0;
-            document.querySelector('.notification-list:not(#emptyState)').style.display = hasNotifications ? 'block' : 'none';
+            document.getElementById('notificationList').style.display = hasNotifications ? 'block' : 'none';
             document.getElementById('emptyState').style.display = hasNotifications ? 'none' : 'block';
         }
 
@@ -442,6 +445,772 @@
                 document.querySelectorAll('.notification-tab').forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
                 
+                const filter = this.getAttribute('data-tab');
+                document.querySelectorAll('.notification-item').forEach(item => {
+                    if (filter === 'all') {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = item.getAttribute('data-status') === filter ? 'flex' : 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+    <style>
+        /* Notification specific styles */
+        .notification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .notification-tabs {
+            display: flex;
+            gap: 8px;
+            background: var(--white);
+            padding: 8px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+        }
+
+        .notification-tab {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .notification-tab.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .notification-tab:hover:not(.active) {
+            background: var(--light-gray);
+        }
+
+        .notification-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .notification-list {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .notification-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-item:hover {
+            background: var(--light-gray);
+        }
+
+        .notification-item.unread {
+            background: rgba(220, 38, 38, 0.02);
+        }
+
+        .notification-item.unread::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary);
+        }
+
+        .notification-icon-wrapper {
+            flex-shrink: 0;
+        }
+
+        .notification-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .notification-icon.reminder {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: var(--white);
+        }
+
+        .notification-icon.measurement {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: var(--white);
+        }
+
+        .notification-icon.article {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            color: var(--white);
+        }
+
+        .notification-icon.system {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: var(--white);
+        }
+
+        .notification-icon.alert {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: var(--white);
+        }
+
+        .notification-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .notification-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .notification-unread-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .notification-message {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .notification-time {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .notification-menu {
+            position: relative;
+        }
+
+        .notification-menu-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: transparent;
+            color: var(--gray);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .notification-menu-btn:hover {
+            background: var(--light-gray);
+            color: var(--dark);
+        }
+
+        .notification-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-md);
+            z-index: 10;
+            min-width: 180px;
+            margin-top: 4px;
+        }
+
+        .notification-dropdown.active {
+            display: block;
+        }
+
+        .notification-dropdown button {
+            width: 100%;
+            padding: 12px 16px;
+            border: none;
+            background: transparent;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notification-dropdown button:hover {
+            background: var(--light-gray);
+        }
+
+        .notification-dropdown button:first-child {
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+        }
+
+        .notification-dropdown button:last-child {
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+        }
+
+        .empty-notifications {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .empty-notifications-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .empty-notifications-icon i {
+            font-size: 36px;
+            color: var(--gray);
+        }
+
+        .empty-notifications h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .empty-notifications p {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        @media (max-width: 768px) {
+            .notification-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .notification-tabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+            }
+
+            .notification-actions {
+                flex-direction: column;
+            }
+
+            .notification-item {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+    <script src="assets/js/sidebar.js" defer></script>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="mobile-header-left">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-logo">
+                <div class="icon-box icon-box-primary" style="width: 40px; height: 40px; font-size: 20px;">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h2>StuntingCare</h2>
+            </div>
+        </div>
+        <div class="avatar avatar-md">
+            <i class="fas fa-user"></i>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div id="sidebar-container"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <div class="mb-lg">
+                <h1 class="heading-xl mb-sm">Notifikasi</h1>
+                <p class="text-md text-gray">Tetap update dengan pemberitahuan penting</p>
+            </div>
+
+            <!-- Notification Header -->
+            <div class="notification-header">
+                <div class="notification-tabs">
+                    <button class="notification-tab active" data-tab="all">
+                        Semua <span class="badge badge-danger" style="margin-left: 6px;">12</span>
+                    </button>
+                    <button class="notification-tab" data-tab="unread">
+                        Belum Dibaca <span class="badge badge-danger" style="margin-left: 6px;">5</span>
+                    </button>
+                    <button class="notification-tab" data-tab="read">
+                        Sudah Dibaca
+                    </button>
+                </div>
+
+                <div class="notification-actions">
+                    <button class="btn btn-outline btn-sm" onclick="markAllAsRead()">
+                        <i class="fas fa-check-double"></i>
+                        Tandai Semua Dibaca
+                    </button>
+                    <button class="btn btn-outline btn-sm" onclick="clearAllNotifications()">
+                        <i class="fas fa-trash"></i>
+                        Hapus Semua
+                    </button>
+                </div>
+            </div>
+
+            <!-- Notification List -->
+            <div class="notification-list">
+                <!-- Notification 1 - Unread -->
+                <div class="notification-item unread" data-status="unread">
+                    <div class="notification-icon-wrapper">
+                        <div class="notification-icon reminder">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">
+                            <span class="notification-unread-dot"></span>
+                            Pengingat Jadwal Kontrol
+                        </div>
+                        <p class="notification-message">
+                            Jadwal kontrol rutin untuk <strong>Naila Suki</strong> besok pukul 09:00 WIB di Puskesmas Jati Asih. Jangan lupa datang tepat waktu!
+                        </p>
+                        <div class="notification-time">
+                            <i class="fas fa-clock"></i>
+                            2 jam yang lalu
+                        </div>
+                    </div>
+                    <div class="notification-menu">
+                        <button class="notification-menu-btn" onclick="toggleNotificationMenu(this)">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="notification-dropdown">
+                            <button onclick="markAsRead(this)">
+                                <i class="fas fa-check"></i>
+                                Tandai Dibaca
+                            </button>
+                            <button onclick="deleteNotification(this)">
+                                <i class="fas fa-trash"></i>
+                                Hapus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification 2 - Unread -->
+                <div class="notification-item unread" data-status="unread">
+                    <div class="notification-icon-wrapper">
+                        <div class="notification-icon measurement">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">
+                            <span class="notification-unread-dot"></span>
+                            Hasil Pengukuran Tersedia
+                        </div>
+                        <p class="notification-message">
+                            Hasil pengukuran terbaru untuk <strong>Naila Suki</strong> sudah tersedia. Status gizi: <strong>Normal</strong>. Lihat detail lengkapnya.
+                        </p>
+                        <div class="notification-time">
+                            <i class="fas fa-clock"></i>
+                            5 jam yang lalu
+                        </div>
+                    </div>
+                    <div class="notification-menu">
+                        <button class="notification-menu-btn" onclick="toggleNotificationMenu(this)">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="notification-dropdown">
+                            <button onclick="markAsRead(this)">
+                                <i class="fas fa-check"></i>
+                                Tandai Dibaca
+                            </button>
+                            <button onclick="deleteNotification(this)">
+                                <i class="fas fa-trash"></i>
+                                Hapus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification 3 - Unread -->
+                <div class="notification-item unread" data-status="unread">
+                    <div class="notification-icon-wrapper">
+                        <div class="notification-icon article">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">
+                            <span class="notification-unread-dot"></span>
+                            Artikel Baru: 1000 Hari Pertama Kehidupan
+                        </div>
+                        <p class="notification-message">
+                            Ada artikel baru yang mungkin menarik untuk Anda: "1000 Hari Pertama Kehidupan: Periode Emas Mencegah Stunting"
+                        </p>
+                        <div class="notification-time">
+                            <i class="fas fa-clock"></i>
+                            1 hari yang lalu
+                        </div>
+                    </div>
+                    <div class="notification-menu">
+                        <button class="notification-menu-btn" onclick="toggleNotificationMenu(this)">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="notification-dropdown">
+                            <button onclick="markAsRead(this)">
+                                <i class="fas fa-check"></i>
+                                Tandai Dibaca
+                            </button>
+                            <button onclick="deleteNotification(this)">
+                                <i class="fas fa-trash"></i>
+                                Hapus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification 4 - Unread -->
+                <div class="notification-item unread" data-status="unread">
+                    <div class="notification-icon-wrapper">
+                        <div class="notification-icon reminder">
+                            <i class="fas fa-syringe"></i>
+                        </div>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">
+                            <span class="notification-unread-dot"></span>
+                            Jadwal Imunisasi Mendatang
+                        </div>
+                        <p class="notification-message">
+                            <strong>Aisyah Putri</strong> memiliki jadwal imunisasi MR pada 18 November 2025 pukul 10:00 WIB di Posyandu Melati.
+                        </p>
+                        <div class="notification-time">
+                            <i class="fas fa-clock"></i>
+                            1 hari yang lalu
+                        </div>
+                    </div>
+                    <div class="notification-menu">
+                        <button class="notification-menu-btn" onclick="toggleNotificationMenu(this)">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="notification-dropdown">
+                            <button onclick="markAsRead(this)">
+                                <i class="fas fa-check"></i>
+                                Tandai Dibaca
+                            </button>
+                            <button onclick="deleteNotification(this)">
+                                <i class="fas fa-trash"></i>
+                                Hapus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification 5 - Unread -->
+                <div class="notification-item unread" data-status="unread">
+                    <div class="notification-icon-wrapper">
+                        <div class="notification-icon alert">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">
+                            <span class="notification-unread-dot"></span>
+                            Perhatian: Pertumbuhan Perlu Dipantau
+                        </div>
+                        <p class="notification-message">
+                            Grafik pertumbuhan <strong>Rizki Ahmad</strong> menunjukkan tren yang perlu diperhatikan. Konsultasikan dengan tenaga kesehatan.
+                        </p>
+                        <div class="notification-time">
+                            <i class="fas fa-clock"></i>
+                            2 hari yang lalu
+                        </div>
+                    </div>
+                    <div class="notification-menu">
+                        <button class="notification-menu-btn" onclick="toggleNotificationMenu(this)">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="notification-dropdown">
+                            <button onclick="markAsRead(this)">
+                                <i class="fas fa-check"></i>
+                                Tandai Dibaca
+                            </button>
+                            <button onclick="deleteNotification(this)">
+                                <i class="fas fa-trash"></i>
+                                Hapus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification 6 - Read -->
+                <div class="notification-item" data-status="read">
+                    <div class="notification-icon-wrapper">
+                        <div class="notification-icon system">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">
+                            Selamat Datang di StuntingCare!
+                        </div>
+                        <p class="notification-message">
+                            Terima kasih telah mendaftar. Mulai pantau pertumbuhan anak Anda dengan fitur lengkap kami.
+                        </p>
+                        <div class="notification-time">
+                            <i class="fas fa-clock"></i>
+                            3 hari yang lalu
+                        </div>
+                    </div>
+                    <div class="notification-menu">
+                        <button class="notification-menu-btn" onclick="toggleNotificationMenu(this)">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="notification-dropdown">
+                            <button onclick="markAsUnread(this)">
+                                <i class="fas fa-envelope"></i>
+                                Tandai Belum Dibaca
+                            </button>
+                            <button onclick="deleteNotification(this)">
+                                <i class="fas fa-trash"></i>
+                                Hapus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification 7 - Read -->
+                <div class="notification-item" data-status="read">
+                    <div class="notification-icon-wrapper">
+                        <div class="notification-icon measurement">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">
+                            Kontrol Berhasil Diselesaikan
+                        </div>
+                        <p class="notification-message">
+                            Kontrol rutin untuk <strong>Naila Suki</strong> telah selesai. Semua data sudah tersimpan di sistem.
+                        </p>
+                        <div class="notification-time">
+                            <i class="fas fa-clock"></i>
+                            5 hari yang lalu
+                        </div>
+                    </div>
+                    <div class="notification-menu">
+                        <button class="notification-menu-btn" onclick="toggleNotificationMenu(this)">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="notification-dropdown">
+                            <button onclick="markAsUnread(this)">
+                                <i class="fas fa-envelope"></i>
+                                Tandai Belum Dibaca
+                            </button>
+                            <button onclick="deleteNotification(this)">
+                                <i class="fas fa-trash"></i>
+                                Hapus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty State (hidden by default) -->
+            <div class="notification-list" id="emptyState" style="display: none;">
+                <div class="empty-notifications">
+                    <div class="empty-notifications-icon">
+                        <i class="fas fa-bell-slash"></i>
+                    </div>
+                    <h3>Tidak Ada Notifikasi</h3>
+                    <p>Anda sudah membaca semua notifikasi</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Toggle notification menu
+        function toggleNotificationMenu(btn) {
+            const dropdown = btn.nextElementSibling;
+            
+            // Close all other dropdowns
+            document.querySelectorAll('.notification-dropdown').forEach(d => {
+                if (d !== dropdown) d.classList.remove('active');
+            });
+            
+            dropdown.classList.toggle('active');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.notification-menu')) {
+                document.querySelectorAll('.notification-dropdown').forEach(d => {
+                    d.classList.remove('active');
+                });
+            }
+        });
+
+        // Mark as read
+        function markAsRead(btn) {
+            const notificationItem = btn.closest('.notification-item');
+            notificationItem.classList.remove('unread');
+            notificationItem.setAttribute('data-status', 'read');
+            notificationItem.querySelector('.notification-unread-dot')?.remove();
+            
+            // Change menu option
+            btn.innerHTML = '<i class="fas fa-envelope"></i> Tandai Belum Dibaca';
+            btn.onclick = function() { markAsUnread(this); };
+            
+            // Close dropdown
+            btn.closest('.notification-dropdown').classList.remove('active');
+            
+            updateBadges();
+        }
+
+        // Mark as unread
+        function markAsUnread(btn) {
+            const notificationItem = btn.closest('.notification-item');
+            notificationItem.classList.add('unread');
+            notificationItem.setAttribute('data-status', 'unread');
+            
+            // Add unread dot if not exists
+            const title = notificationItem.querySelector('.notification-title');
+            if (!title.querySelector('.notification-unread-dot')) {
+                const dot = document.createElement('span');
+                dot.className = 'notification-unread-dot';
+                title.insertBefore(dot, title.firstChild);
+            }
+            
+            // Change menu option
+            btn.innerHTML = '<i class="fas fa-check"></i> Tandai Dibaca';
+            btn.onclick = function() { markAsRead(this); };
+            
+            // Close dropdown
+            btn.closest('.notification-dropdown').classList.remove('active');
+            
+            updateBadges();
+        }
+
+        // Delete notification
+        function deleteNotification(btn) {
+            const notificationItem = btn.closest('.notification-item');
+            notificationItem.style.opacity = '0';
+            setTimeout(() => {
+                notificationItem.remove();
+                updateBadges();
+                checkEmptyState();
+            }, 300);
+        }
+
+        // Mark all as read
+        function markAllAsRead() {
+            document.querySelectorAll('.notification-item.unread').forEach(item => {
+                item.classList.remove('unread');
+                item.setAttribute('data-status', 'read');
+                item.querySelector('.notification-unread-dot')?.remove();
+            });
+            updateBadges();
+        }
+
+        // Clear all notifications
+        function clearAllNotifications() {
+            if (confirm('Apakah Anda yakin ingin menghapus semua notifikasi?')) {
+                document.querySelectorAll('.notification-item').forEach(item => {
+                    item.style.opacity = '0';
+                });
+                setTimeout(() => {
+                    document.querySelectorAll('.notification-item').forEach(item => {
+                        item.remove();
+                    });
+                    updateBadges();
+                    checkEmptyState();
+                }, 300);
+            }
+        }
+
+        // Update badge counts
+        function updateBadges() {
+            const allCount = document.querySelectorAll('.notification-item').length;
+            const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+            
+            document.querySelector('[data-tab="all"] .badge').textContent = allCount;
+            document.querySelector('[data-tab="unread"] .badge').textContent = unreadCount;
+        }
+
+        // Check if should show empty state
+        function checkEmptyState() {
+            const hasNotifications = document.querySelectorAll('.notification-item').length > 0;
+            document.querySelector('.notification-list:not(#emptyState)').style.display = hasNotifications ? 'block' : 'none';
+            document.getElementById('emptyState').style.display = hasNotifications ? 'none' : 'block';
+        }
+
+        // Tab filtering
+        document.querySelectorAll('.notification-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                document.querySelectorAll('.notification-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter notifications
                 const filter = this.getAttribute('data-tab');
                 document.querySelectorAll('.notification-item').forEach(item => {
                     if (filter === 'all') {
